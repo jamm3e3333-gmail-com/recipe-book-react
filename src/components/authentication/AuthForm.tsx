@@ -5,10 +5,13 @@ import Loader from '../UI/Loader'
 import { useAppSelector, useAppDispatch } from '../../store'
 import { authUser, UserCredentials } from '../../store/storeSlices/authenticationSlice'
 import Input from '../UI/Input'
+import { Link } from 'react-router-dom'
 
 const AuthForm: React.FC<{
     authName: string
     isAuthenticating: boolean
+    navigateToPath: 'login' | 'signup'
+    navigateToPathLinkName: 'Login' | 'Sign up'
     handleAuthEvent: ( e: React.FormEvent<HTMLFormElement> ) => Promise<void>
 }> = ( props ) => {
     const dispath = useAppDispatch()
@@ -45,12 +48,14 @@ const AuthForm: React.FC<{
                     />
                     <Button type='submit' name='login' disabled={isButtonDisabled}>{props.authName}</Button>
                 </form>
-            </Container>
             {props.isAuthenticating &&
-                <Container>
                     <Loader />
-                </Container>
             }
+            </Container>
+            <div className={classes['auth-links']}>
+                <Link to={`/${props.navigateToPath}`}>{props.navigateToPathLinkName}</Link>
+                <Link to='/'>Home</Link>
+            </div>
         </div>
     )
 }

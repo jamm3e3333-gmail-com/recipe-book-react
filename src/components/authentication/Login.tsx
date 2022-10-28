@@ -23,7 +23,13 @@ const Login: React.FC = () => {
     }
 
     return (
-        <AuthForm authName='login' handleAuthEvent={handleLogin} isAuthenticating={isLoggingState} />
+        <AuthForm
+            authName='login'
+            handleAuthEvent={handleLogin}
+            isAuthenticating={isLoggingState}
+            navigateToPath='signup'
+            navigateToPathLinkName='Sign up'
+        />
     )
 }
 
