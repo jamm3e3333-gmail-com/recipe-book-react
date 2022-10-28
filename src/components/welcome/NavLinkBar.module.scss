@@ -1,0 +1,19 @@
+.welcome-navigation {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding: 5rem 3rem;
+    a {
+        margin: 2rem 4rem;
+        color: rgba(0, 0, 0, .6);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: .5rem;
+        &:hover {
+            color: rgba(255, 76, 5, 0.5);
+            border-bottom: solid rgba(255, 76, 5, 0.5) .3rem;
+            transition: .3s;
+        }
+    }
+}
