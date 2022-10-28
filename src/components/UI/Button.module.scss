@@ -1,0 +1,13 @@
+.button-generic {
+    padding: 1.2rem 3.5rem;
+    text-transform: capitalize;
+    border-radius: 8rem;
+    outline: none;
+    border: none;
+    font-size: 1.7rem;
+    background-color: rgba(252, 67, 15, 1);
+
+    &:hover {
+        cursor: pointer;
+    }
+}
