@@ -1,0 +1,31 @@
+.auth-container {
+    margin: 2rem auto;
+    padding: 3rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, .25);
+    width: 50%;
+    animation: moveFromBottom 1s ease-out;
+    .auth-form {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 40rem;
+        padding: 3rem 6rem;
+        gap: 3rem;
+    }
+}
+
+@keyframes moveFromBottom {
+    0% {
+      transform: translateY(20rem);
+      opacity: 0;
+    }
+    80% {
+        transform: translateY(-1rem); 
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+}
