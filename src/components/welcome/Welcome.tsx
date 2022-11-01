@@ -1,5 +1,5 @@
 import React from 'react'
-import NavLinkBar from './NavLinkBar'
+import NavLinkBar from './NavLinkBarForWelcome'
 import classes from './Welcome.module.scss'
 
 const Welcome: React.FC = () => {
