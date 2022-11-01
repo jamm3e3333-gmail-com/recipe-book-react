@@ -1,3 +1,5 @@
+@import '../../styles/colors';
+
 .recipe-ingredients {
     margin: 0 10rem 0;
     text-align: left;
@@ -5,7 +7,7 @@
     &--listbox {
       width: 100%;
       padding-top: 2.5rem;
-      border-top: rgba(0, 0, 0, .25) solid .1rem;
+      border-top: $black solid .1rem;
     }
     p {
       text-align: center;

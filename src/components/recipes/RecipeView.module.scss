@@ -1,5 +1,7 @@
+@import '../../styles/mixins';
+
 .recipe-view {
-    animation: moveInRight .3s ease-out;
+    @include animation-moveInRight(.3s);
     &--subheader {
       display: flex;
       flex-direction: row;
@@ -26,17 +28,4 @@
       margin-right: .5rem;
       align-items: center;
     }
-}
-
-@keyframes moveInRight {
-    0% {
-      transform: translateX(20rem);
-      opacity: 0;
-    }
-    80% {
-      transform: translateX(-1rem);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0); }
 }

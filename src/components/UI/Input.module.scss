@@ -1,20 +1,19 @@
-$inputHoverBorder: rgba(222, 58, 40, .4);
-$inputText: rgba(0, 0, 0, .6);
+@import '../../styles/mixins';
+@import '../../styles/variables';
 
 .form-input {
     padding: 1.2rem 1.5rem;
     font-size: 1.6rem;
     border-radius: 1rem;
-    border: rgba(0, 0, 0, .4) solid .13rem;
-    color: $inputText;
+    border: $black solid .13rem;
+    color: $black;
     &:focus, &:active {
-    outline: none;
-    border: $inputHoverBorder solid .05rem;
-    box-shadow:
-        0 0 .2rem rgba(255, 255, 255, 1),
-        0 0 .2rem rgba(255, 255, 255, 1),
-        0 0 2rem $inputHoverBorder,
-        0 0 0.8rem $inputHoverBorder,
-        inset 0 0 1rem $inputHoverBorder;
+        outline: none;
+    }
+    &--valid {
+        @include input-focus-active($green, $green-box-shadow);
+    }
+    &--invalid {
+        @include input-focus-active($red-brown, $red-box-shadow);
     }
 }
