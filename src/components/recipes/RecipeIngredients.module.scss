@@ -1,0 +1,34 @@
+.recipe-ingredients {
+    margin: 0 10rem 0;
+    text-align: left;
+
+    &--listbox {
+      width: 100%;
+      padding-top: 2.5rem;
+      border-top: rgba(0, 0, 0, .25) solid .1rem;
+    }
+    p {
+      text-align: center;
+      margin: 0;
+      font-weight: 700;
+    }
+    ul {
+      margin: 0;
+    }
+    ul {
+      display: inline-block;
+      padding-inline-start: .5rem;
+      white-space: nowrap;
+      list-style-type: disc;
+      li {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        svg {
+          height: 2.5rem;
+          margin: 0;
+        }
+      }
+    }
+}
