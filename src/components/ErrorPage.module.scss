@@ -1,14 +1,5 @@
-$white: rgba(255, 255, 255, 1);
-$neon-red: rgba(254, 19, 19, 1);
-$white-neon-text: rgba(240, 240, 240, 1);
-$neon-text-shadow: 0 0 7px $white,
-0 0 10px $white,
-0 0 21px $white,
-0 0 42px $neon-red,
-0 0 82px $neon-red,
-0 0 92px $neon-red,
-0 0 102px $neon-red,
-0 0 151px $neon-red;
+@import '../styles/variables';
+@import '../styles/mixins';
 
 .error {
     text-transform: uppercase;
@@ -35,11 +26,7 @@ $neon-text-shadow: 0 0 7px $white,
 
     a {
         text-decoration: none;
-        color: rgba(0, 0, 0, .6);
-        &:hover {
-          color: rgba(255, 76, 5, 0.5);
-          border-bottom: solid rgba(255, 76, 5, 0.5) .3rem;
-          transition: .3s;
-        }
+        color: $black;
+        @include hover-changeColorWithTransition($red-brown, .3s);
     }
 }

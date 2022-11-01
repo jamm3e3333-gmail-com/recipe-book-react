@@ -1,0 +1,72 @@
+@import './colors';
+
+@mixin input-focus-active ($border-color, $box-shadow-effect) {
+    &:focus, &:active {
+        border: $border-color solid .05rem;
+        box-shadow: $box-shadow-effect;
+    }
+}
+
+@mixin box-shade {
+    box-shadow: 0 2rem 2rem $shadow-black;
+}
+
+@mixin animation-moveInRight ($transition-time) {
+    animation: moveInRight $transition-time ease-out;
+}
+
+@mixin animation-moveInLeft ($transition-time) {
+  animation: moveInLeft $transition-time ease-out;
+}
+
+@mixin animation-moveFromBottom ($transition-time) {
+  animation: moveFromBottom $transition-time ease-out;
+}
+
+@mixin hover-changeColorWithTransition ($hover-color, $transition-time) {
+  &:hover {
+    color: $hover-color;
+    border-bottom: solid $hover-color .3rem;
+    transition: $transition-time;
+  }
+}
+
+@keyframes moveInRight {
+    0% {
+      transform: translateX(20rem);
+      opacity: 0;
+    }
+    80% {
+      transform: translateX(-1rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0); }
+}
+
+@keyframes moveInLeft {
+  0% {
+    transform: translateX(-20rem);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); }
+}
+
+@keyframes moveFromBottom {
+  0% {
+    transform: translateY(20rem);
+    opacity: 0;
+  }
+  80% {
+      transform: translateY(-1rem); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
