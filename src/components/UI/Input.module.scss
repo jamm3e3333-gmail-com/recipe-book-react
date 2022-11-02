@@ -1,7 +1,25 @@
 @import '../../styles/mixins';
 @import '../../styles/variables';
 
+.input-box {
+    padding: .5rem 0 0;
+    &--error {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: .5rem;
+        align-items: center;
+        margin: .8rem 0 0 .8rem;
+        color: $error-red;
+        font-size: 1.3rem;
+        svg {
+            width: 6%;
+        }
+    }
+}
+
 .form-input {
+    width: 100%;
     padding: 1.2rem 1.5rem;
     font-size: 1.6rem;
     border-radius: 1rem;
@@ -9,11 +27,5 @@
     color: $black;
     &:focus, &:active {
         outline: none;
-    }
-    &--valid {
-        @include input-focus-active($green, $green-box-shadow);
-    }
-    &--invalid {
-        @include input-focus-active($red-brown, $red-box-shadow);
     }
 }
