@@ -1,48 +1,63 @@
+import { Link, Navigate } from 'react-router-dom'
+import React from 'react'
+import { validateEmail, validatePassword } from '../../utils'
+import useChangeInputEvent from '../../hooks/useInputChangeEvent'
 import Container from '../UI/Container'
-import classes from './AuthForm.module.scss'
 import Button from '../UI/Button'
 import Loader from '../UI/Loader'
-import { useAppSelector, useAppDispatch } from '../../store'
-import { authUser, UserCredentials } from '../../store/storeSlices/authenticationSlice'
 import Input from '../UI/Input'
-import { Link } from 'react-router-dom'
+import { useAppSelector } from '../../store'
+import { setEmail, setPassword, UserCredentials } from '../../store/storeSlices/userCredentialsSlice'
+import classes from './AuthForm.module.scss'
 
-const AuthForm: React.FC<{
+const AuthForm: FunComponent<{
     authName: string
     isAuthenticating: boolean
     navigateToPath: 'login' | 'signup'
     navigateToPathLinkName: 'Login' | 'Sign up'
-    handleAuthEvent: ( e: React.FormEvent<HTMLFormElement> ) => Promise<void>
+    handleAuthOnSubmitEvent: ( e: React.FormEvent<HTMLFormElement> ) => Promise<void> | void
 }> = ( props ) => {
-    const dispath = useAppDispatch()
-    const {email, password, accessToken} = useAppSelector( state => state.authReducer )
-    const isButtonDisabled = props.isAuthenticating || !!accessToken || !email || !password
+    const {
+        handleChangeEvent: handleChangeEmailInput,
+        isInputValueValid: isEmailValid
+    } = useChangeInputEvent<Pick<UserCredentials, 'email'>>(validateEmail, {
+        actionPayloadKeyName: 'email',
+        storeAction: setEmail,
+    })
 
-    const setCredentialsFromInput = ( e: React.ChangeEvent<HTMLInputElement>, stateKey: keyof UserCredentials ) =>
-        dispath(authUser({[ stateKey ]: e.target.value ?? ''}))
+    const {
+        handleChangeEvent: handleChangePasswordInput,
+        isInputValueValid: isPasswordValid
+    } = useChangeInputEvent<Pick<UserCredentials, 'password'>>(validatePassword, {
+        actionPayloadKeyName: 'password',
+        storeAction: setPassword,
+    })
 
-    const handleInputEmail = ( e: React.ChangeEvent<HTMLInputElement> ) =>
-        setCredentialsFromInput( e, 'email' )
+    const {email, password} = useAppSelector( state => state.userCredentialsReducer )
+    const {accessToken} = useAppSelector( state => state.authReducer )
+    const isButtonDisabled = !isEmailValid || !isPasswordValid || props.isAuthenticating || !email || !password
 
-    const handleInputPassword = ( e: React.ChangeEvent<HTMLInputElement> ) =>
-        setCredentialsFromInput( e, 'password' )
-
+    if (accessToken) {
+        return <Navigate replace to='/' />
+    }
     return (
         <div className={classes[ 'auth-container' ]}>
             <Container>
-                <form action='' onSubmit={props.handleAuthEvent} className={classes[ 'auth-form' ]}>
+                <form action='' onSubmit={props.handleAuthOnSubmitEvent} className={classes[ 'auth-form' ]}>
                     <label htmlFor='email'>Email: </label>
                     <Input
+                        isValid={isEmailValid}
                         placeholder='Email...'
-                        onChange={handleInputEmail}
-                        name='Email'
+                        onChange={handleChangeEmailInput}
+                        name='email'
                         value={email ?? ''}
                     />
                     <label htmlFor='password'>Password: </label>
                     <Input
+                        isValid={isPasswordValid}
                         placeholder='Password...'
                         type='password'
-                        onChange={handleInputPassword}
+                        onChange={handleChangePasswordInput}
                         name='password'
                         value={password ?? ''}
                     />

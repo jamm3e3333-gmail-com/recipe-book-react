@@ -1,32 +1,34 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { authLogin } from '../../store/storeSlices/authenticationSlice'
+import { resetCredentials } from '../../store/storeSlices/userCredentialsSlice'
 import { useAppDispatch, useAppSelector } from '../../store'
 import AuthForm from './AuthForm'
+import useAuthenticatingState from '../../hooks/useAuthenticatingState'
 
-
-const Login: React.FC = () => {
-    const [ isLoggingState, setIsLoggingState ] = useState<boolean>( false )
+const Login: FunComponent = () => {
+    const {isAuthenticating, setIsAuthenticating} = useAuthenticatingState()
     const dispatch = useAppDispatch()
-    const { email, password } = useAppSelector( state => state.authReducer )
+    const { email, password } = useAppSelector( state => state.userCredentialsReducer )
 
-    const handleLogin = async ( e: React.FormEvent<HTMLFormElement> ) => {
+    const handleLoginOnSubmit = async ( e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault()
         if ( !email || !password ) {
             return
         }
 
-        setIsLoggingState( true )
+        setIsAuthenticating( true )
         setTimeout( async () => {
             await dispatch( authLogin( { email, password } ) )
-            setIsLoggingState( false )
+            setIsAuthenticating( false )
         }, 1000 )
+        dispatch(resetCredentials())
     }
 
     return (
         <AuthForm
             authName='login'
-            handleAuthEvent={handleLogin}
-            isAuthenticating={isLoggingState}
+            handleAuthOnSubmitEvent={handleLoginOnSubmit}
+            isAuthenticating={isAuthenticating}
             navigateToPath='signup'
             navigateToPathLinkName='Sign up'
         />
