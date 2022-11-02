@@ -1,10 +1,9 @@
-import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { logout } from '../store/storeSlices/authenticationSlice'
 import { useAppDispatch, useAppSelector } from '../store'
 import classes from './Navigation.module.scss'
 
-const Navigation: React.FC<{className?: string }> = ( props ) => {
+const Navigation: FunComponent<{className?: string }> = ( props ) => {
     const { username, accessToken } = useAppSelector(state => state.authReducer)
     const dispatch = useAppDispatch()
 

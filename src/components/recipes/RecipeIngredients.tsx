@@ -1,9 +1,8 @@
-import React from 'react'
 import IngredientIcon from '../icons/IngredientIcon'
 import { Recipe } from './dummyRecipes'
 import classes from './RecipeIngredients.module.scss'
 
-const RecipeIngredients: React.FC<{
+const RecipeIngredients: FunComponent<{
     ingredients: Recipe['ingredients']
 }> = ({ ingredients }) => {
     return (
