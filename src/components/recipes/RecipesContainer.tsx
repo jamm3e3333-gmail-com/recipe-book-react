@@ -1,12 +1,11 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import RecipeCard from './RecipeCard'
 import classes from './RecipesContainer.module.scss'
 import recipes from './dummyRecipes'
 
-const RecipesContainer: React.FC = () => {
+const RecipesContainer: FunComponent = () => {
     const navigate = useNavigate()
-    const viewRecipe = (id: string) => {
+    const viewRecipeDetail = (id: string) => {
         navigate(id)
     }
     return (
@@ -18,7 +17,7 @@ const RecipesContainer: React.FC = () => {
                     image={x.image}
                     name={x.name}
                     duration={x.duration}
-                    viewRecipe={viewRecipe}
+                    viewRecipe={viewRecipeDetail}
                 />
             ))}
         </div>

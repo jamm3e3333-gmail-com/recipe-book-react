@@ -1,8 +1,7 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import classes from './ErrorPage.module.scss'
 
-const ErrorPage: React.FC = () => {
+const ErrorPage: FunComponent = () => {
     return (
         <>
             <div className={classes.error}>

@@ -10,7 +10,8 @@ interface ButtonProps {
     disabled?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ( props ) => {
+
+const Button: FunComponent<ButtonProps> = ( props ) => {
     return (
         <button
             className={`${props.className} ${classes[ 'button-generic' ]}`}

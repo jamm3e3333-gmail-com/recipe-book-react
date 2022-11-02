@@ -1,16 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { UserCredentials } from './userCredentialsSlice'
 
 export interface AuthenticationState {
     username?: string
     userId?: string
     accessToken?: string
     refreshToken?: string
-    email?: string,
-    password?: string,
 }
-
-export type UserCredentials = Required<Pick<AuthenticationState, 'email' | 'password'>>
 
 const initialState: AuthenticationState = {}
 
@@ -60,19 +56,10 @@ export const authSignUp = createAsyncThunk<
     }
 })
 
-export const authenticationSlice = createSlice({
+const authenticationSlice = createSlice({
     initialState,
     name: 'authentication',
     reducers: {
-        authUser: (userState, userPayload: PayloadAction<AuthenticationState>) => {
-            const {email, password} = userPayload.payload
-            if (email !== undefined) {
-                userState.email = email
-            }
-            if (password !== undefined) {
-                userState.password = password
-            }
-        },
         logout: (state) => {
             for (const key in state) {
                 state[key as keyof AuthenticationState] = undefined
@@ -87,6 +74,6 @@ export const authenticationSlice = createSlice({
     }
 })
 
-export const { logout, authUser } = authenticationSlice.actions
+export const { logout } = authenticationSlice.actions
 
 export default authenticationSlice.reducer
