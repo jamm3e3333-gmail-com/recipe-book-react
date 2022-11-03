@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom'
+import { useAppSelector } from '../../store'
 import RecipeCard from './RecipeCard'
 import classes from './RecipesContainer.module.scss'
-import recipes from './dummyRecipes'
 
 const RecipesContainer: FunComponent = () => {
     const navigate = useNavigate()
     const viewRecipeDetail = (id: string) => {
         navigate(id)
     }
+    const recipes = useAppSelector(state => state.recipeSlice)
     return (
         <div className={classes['recipes-container']}>
             {recipes.length && recipes.map(x => (

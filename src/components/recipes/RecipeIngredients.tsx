@@ -1,5 +1,5 @@
 import IngredientIcon from '../icons/IngredientIcon'
-import { Recipe } from './dummyRecipes'
+import { Recipe } from '../../store/storeSlices/recipeSlice'
 import classes from './RecipeIngredients.module.scss'
 
 const RecipeIngredients: FunComponent<{

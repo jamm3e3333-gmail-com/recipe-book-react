@@ -2,15 +2,15 @@ import Container from '../UI/Container'
 import { useParams } from 'react-router-dom'
 import lodash from 'lodash'
 import classes from './RecipeView.module.scss'
-import recipes from './dummyRecipes'
 import ErrorPage from '../ErrorPage'
 import ClockIcon from '../icons/ClockIcon'
 import StarIcon from '../icons/StarIcon'
 import RecipeDescription from './RecipeDescription'
+import { useAppSelector } from '../../store'
 
 const RecipeView: FunComponent = () => {
     const params = useParams()
-    
+    const recipes = useAppSelector(state => state.recipeSlice)
     const idToRecipe = lodash.keyBy(recipes, x => x.id)
     const recipe = idToRecipe[params.id ?? '-1']
     if (!recipe) {

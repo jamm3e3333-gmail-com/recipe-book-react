@@ -1,4 +1,4 @@
-import { Recipe } from './dummyRecipes'
+import { Recipe } from '../../store/storeSlices/recipeSlice'
 import classes from './RecipeDescription.module.scss'
 import RecipeIngredients from './RecipeIngredients'
 import RecipePreparation from './RecipePreparation'

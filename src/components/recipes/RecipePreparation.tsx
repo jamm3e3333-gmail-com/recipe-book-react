@@ -1,4 +1,4 @@
-import { Recipe } from './dummyRecipes'
+import { Recipe } from '../../store/storeSlices/recipeSlice'
 import classes from './RecipePreparation.module.scss'
 
 const RecipePreparation: FunComponent<{

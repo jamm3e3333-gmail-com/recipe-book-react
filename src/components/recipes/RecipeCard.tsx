@@ -1,5 +1,5 @@
 import classes from './RecipeCard.module.scss'
-import { Recipe } from './dummyRecipes'
+import { Recipe } from '../../store/storeSlices/recipeSlice'
 import EditIcon from '../icons/EditIcon'
 
 const RecipesContainer: FunComponent<Pick<Recipe, 'image' | 'name' | 'duration'> & {id: string, viewRecipe: (id: string) => void}> = (props) => {
